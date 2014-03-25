@@ -16,7 +16,7 @@ body {
   clear: both; }
 
 h1.title {
-  font-size: 64px;
+  font-size: 60px;
   font-weight: bold;
   margin: 0;
   display: block;
@@ -516,7 +516,7 @@ hr {
     padding: 0 20px; }
 
   h1.title {
-    font-size: 27px;
+    font-size: 25px;
     margin-top: 15px; }
 
   .container {
@@ -556,7 +556,7 @@ hr {
     -ms-user-select: none;
     -ms-touch-action: none;
     touch-action: none;
-    background: #bbada0;
+    background: #526017;
     border-radius: 6px;
     width: 280px;
     height: 280px;
