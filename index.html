@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>2048</title>
+  <title>PAD2048</title>
 
   <link href="style/main.css" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="favicon.ico">
@@ -16,7 +16,7 @@
 <body>
   <div class="container">
     <div class="heading">
-      <h1 class="title">2048</h1>
+      <h1 class="title">PAD2048</h1>
       <div class="scores-container">
         <div class="score-container">0</div>
         <div class="best-container">0</div>
@@ -24,7 +24,7 @@
     </div>
 
     <div class="above-game">
-      <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
+      <p class="game-intro">Evolve the cards and get the <strong>Dragon Lord!</strong></p>
       <a class="restart-button">New Game</a>
     </div>
 
@@ -70,7 +70,7 @@
     </div>
 
     <p class="game-explanation">
-      <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
+      <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the cards. When two cards with the same icon touch, they <strong>evolve into one!</strong>
     </p>
     <hr>
     <p>
@@ -88,5 +88,13 @@
   <script src="js/local_storage_manager.js"></script>
   <script src="js/game_manager.js"></script>
   <script src="js/application.js"></script>
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-48010296-2', 'pad2048.net');
+      ga('send', 'pageview');
+  </script>
 </body>
 </html>
