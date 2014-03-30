@@ -1,0 +1,51 @@
+CACHE MANIFEST
+# version 1.1.2 built 2014.03.27 12:18
+# images
+img/tile-2.png
+img/tile-4.png
+img/tile-8.png
+img/tile-16.png
+img/tile-32.png
+img/tile-64.png
+img/tile-128.png
+img/tile-256.png
+img/tile-512.png
+img/tile-1024.png
+img/tile-2048.png
+img/tile-4096.png
+img/tile-super.png
+
+meta/apple-touch-icon.png
+
+# scripts
+js/animframe_polyfill.js
+js/application.js
+js/bind_polyfill.js
+js/classlist_polyfill.js
+js/game_manager.js
+js/grid.js
+js/html_actuator.js
+js/keyboard_input_manager.js
+js/local_storage_manager.js
+js/tile.js
+
+# css
+style/main.css
+style/fonts/ClearSans-Bold-webfont.eot
+style/fonts/ClearSans-Bold-webfont.svg
+style/fonts/ClearSans-Bold-webfont.woff
+style/fonts/ClearSans-Light-webfont.eot
+style/fonts/ClearSans-Light-webfont.svg
+style/fonts/ClearSans-Light-webfont.woff
+style/fonts/ClearSans-Regular-webfont.eot
+style/fonts/ClearSans-Regular-webfont.svg
+style/fonts/ClearSans-Regular-webfont.woff
+style/fonts/clear-sans.css
+
+favicon.ico
+index.html
+
+FALLBACK:
+
+NETWORK:
+*

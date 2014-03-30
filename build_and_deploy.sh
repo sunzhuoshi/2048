@@ -15,7 +15,7 @@ if [ ! $upload_dir ]; then
 fi
 
 project=pad2048
-distr_files=(favicon.ico index.html LICENSE.txt)
+distr_files=(cache.manifest favicon.ico index.html LICENSE.txt)
 rm_files=()
 # DO NOT ADD the last '/'
 distr_dirs=(img js meta style)
@@ -80,8 +80,10 @@ for file in ${rm_files[@]}; do
 done
 
 cd $version_dir
+echo "removing file(s) not needed..."
+find . -name "*.scss" | xargs rm -f
 echo "removing hidden file(s)..."
-rm -rf .DS_Store
+find . -name ".DS_Store"  | xargs rm -f
 
 echo packaging...
 tar -zcf $tar_file *
