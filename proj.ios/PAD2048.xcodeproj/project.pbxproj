@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		651CBED518E802EF00CC51F2 /* licenses in Resources */ = {isa = PBXBuildFile; fileRef = 651CBED418E802EF00CC51F2 /* licenses */; };
 		653FBD3E18E3EAE100449414 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 653FBD3D18E3EAE100449414 /* Foundation.framework */; };
 		653FBD4018E3EAE100449414 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 653FBD3F18E3EAE100449414 /* CoreGraphics.framework */; };
 		653FBD4218E3EAE100449414 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 653FBD4118E3EAE100449414 /* UIKit.framework */; };
@@ -30,7 +31,6 @@
 		6577DCD618E4707C00C4EDDA /* libFlurry_4.3.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6577DCD518E4707C00C4EDDA /* libFlurry_4.3.2.a */; };
 		6577DCDA18E4718000C4EDDA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6577DCD918E4717F00C4EDDA /* SystemConfiguration.framework */; };
 		6577DCDD18E4887A00C4EDDA /* index-iOS.html in Resources */ = {isa = PBXBuildFile; fileRef = 6577DCDC18E4887A00C4EDDA /* index-iOS.html */; };
-		6577DCE218E4961200C4EDDA /* Licenses in Resources */ = {isa = PBXBuildFile; fileRef = 6577DCE118E4961200C4EDDA /* Licenses */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		651CBED418E802EF00CC51F2 /* licenses */ = {isa = PBXFileReference; lastKnownFileType = folder; name = licenses; path = ../../licenses; sourceTree = "<group>"; };
 		653FBD3A18E3EAE100449414 /* PAD2048.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PAD2048.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		653FBD3D18E3EAE100449414 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		653FBD3F18E3EAE100449414 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -73,7 +74,6 @@
 		6577DCD718E4714200C4EDDA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6577DCD918E4717F00C4EDDA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6577DCDC18E4887A00C4EDDA /* index-iOS.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "index-iOS.html"; path = "../../index-iOS.html"; sourceTree = "<group>"; };
-		6577DCE118E4961200C4EDDA /* Licenses */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Licenses; path = Flurry/Licenses; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +142,7 @@
 		653FBD4318E3EAE100449414 /* PAD2048 */ = {
 			isa = PBXGroup;
 			children = (
-				6577DCDE18E495CC00C4EDDA /* Flurry */,
+				651CBED418E802EF00CC51F2 /* licenses */,
 				6577DCC818E40A3F00C4EDDA /* Bundle */,
 				653FBD4C18E3EAE100449414 /* PDAppDelegate.h */,
 				653FBD4D18E3EAE100449414 /* PDAppDelegate.m */,
@@ -194,14 +194,6 @@
 				6577DCCD18E40A8600C4EDDA /* style */,
 			);
 			name = Bundle;
-			sourceTree = "<group>";
-		};
-		6577DCDE18E495CC00C4EDDA /* Flurry */ = {
-			isa = PBXGroup;
-			children = (
-				6577DCE118E4961200C4EDDA /* Licenses */,
-			);
-			name = Flurry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				651CBED518E802EF00CC51F2 /* licenses in Resources */,
 				6577DCCF18E40A8600C4EDDA /* img in Resources */,
 				6577DCD018E40A8600C4EDDA /* js in Resources */,
 				653FBD5618E3EAE100449414 /* Images.xcassets in Resources */,
@@ -299,7 +292,6 @@
 				653FBD5118E3EAE100449414 /* Main.storyboard in Resources */,
 				6577DCDD18E4887A00C4EDDA /* index-iOS.html in Resources */,
 				6577DCD218E40A8600C4EDDA /* style in Resources */,
-				6577DCE218E4961200C4EDDA /* Licenses in Resources */,
 				6577DCD118E40A8600C4EDDA /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
