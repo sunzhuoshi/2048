@@ -72,7 +72,7 @@ GameManager.prototype.aiPlayNextMove = function(algorithm) {
 			var self = this;
 			setTimeout(function(){
 				self.aiPlayNextMove(algorithm);
-			}, 50);					
+			}, 500);					
 		}		
 	}
 }
