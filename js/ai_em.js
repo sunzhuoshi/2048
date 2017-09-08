@@ -10,14 +10,7 @@ var SEARCH_DEPTH = 2;
 var CUMULATIVE_PROBABILITY_THRESHOLD_BASE = 0.0001;
 var CACHE_DEPTH_LIMIT = 3;
 
-AI = function() {
-}
-
-AI.getBestMove = function(grid) {
-	var startTime = (new Date()).getTime();
-	var best = this.search(grid);
-	console.log('time: ' + (new Date().getTime() - startTime));
-	return best;
+var AI_em = function() {
 }
 
 function State() {
@@ -37,7 +30,7 @@ function State() {
 	}
 }
 
-AI.search = function(grid) {
+AI_em.getBestMove = function(grid) {
 	var bestScore = 0;
 	var bestMove = -1;
 	var gridCompacted = grid.toCompacted();
@@ -59,7 +52,7 @@ AI.search = function(grid) {
 	return bestMove;
 }
 
-AI.scoreCpuNode = function(gridCompacted, state, cumulativeProbability) {
+AI_em.scoreCpuNode = function(gridCompacted, state, cumulativeProbability) {
 	var score = 0.0;
 	if (cumulativeProbability < CUMULATIVE_PROBABILITY_THRESHOLD_BASE || state.curDepth >= state.depthLimit) {
 		score = this.heuristicEvaluationGrid(gridCompacted); 
@@ -117,7 +110,7 @@ AI.scoreCpuNode = function(gridCompacted, state, cumulativeProbability) {
 	return score;
 }
 
-AI.scorePlayerNode = function(gridCompacted, state, cumulativeProbability) {
+AI_em.scorePlayerNode = function(gridCompacted, state, cumulativeProbability) {
 	var bestScore = 0.0;
 	state.curDepth ++;
 	for (var direction in [0, 1, 2, 3]) {
@@ -132,7 +125,7 @@ AI.scorePlayerNode = function(gridCompacted, state, cumulativeProbability) {
 	return bestScore;
 }
 
-AI.heuristicEvaluationRow = function(row) {
+AI_em.heuristicEvaluationRow = function(row) {
 	var sum = 0, 
 		emptyCount = 0,
 		mergeCount = 0;
@@ -186,17 +179,17 @@ AI.heuristicEvaluationRow = function(row) {
 		SCORE_SUM_WEIGHT * sum;
 }
 
-AI.heuristicEvaluationRows = function(gridCompacted) {
+AI_em.heuristicEvaluationRows = function(gridCompacted) {
 	var score = 0;
 	
-	score += this.heuristicEvaluationRow(gridCompacted.low);
+	score += this.heuristicEvaluationRow(gridCompacted.low & 0xFFFF);
 	score += this.heuristicEvaluationRow(gridCompacted.low >> 16 & 0xFFFF);	
-	score += this.heuristicEvaluationRow(gridCompacted.high);
+	score += this.heuristicEvaluationRow(gridCompacted.high & 0xFFFF);
 	score += this.heuristicEvaluationRow(gridCompacted.high >> 16 & 0xFFFF);		
 	return score;
 }
 
-AI.heuristicEvaluationGrid = function(gridCompacted) {
+AI_em.heuristicEvaluationGrid = function(gridCompacted) {
 	return this.heuristicEvaluationRows(gridCompacted) + 
 		this.heuristicEvaluationRows(gridCompacted.transpose());
 }

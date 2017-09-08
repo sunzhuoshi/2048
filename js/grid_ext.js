@@ -19,16 +19,23 @@ Grid.prototype.insertTile = function (tile) {
   return this;
 };
 
-Grid.prototype.print = function() {
-	for (var y=0; y<4; ++y) {
-		var rows = new Array(4);
-		rows.fill(0);
-		for (var x=0; x<4; ++x) {
-			if (this.cells[x][y]) {
-				rows[x] = this.cells[x][y].value;
+Grid.prototype.print = function(padding) {
+	if (debug.on) {
+		var msg = '';
+		for (var y=0; y<4; ++y) {
+			var rows = new Array(4);
+			rows.fill(0);
+			for (var x=0; x<4; ++x) {
+				if (this.cells[x][y]) {
+					rows[x] = this.cells[x][y].value;
+				}
 			}
+			msg += y + ': ' + '\t' + rows[0] + '\t' + rows[1] + '\t' + rows[2] + '\t' + rows[3] + '\n';
 		}
-		debug.log(y + ': ' + '\t' + rows[0] + '\t' + rows[1] + '\t' + rows[2] + '\t' + rows[3]);
+		if ('string' === typeof padding) {
+			msg += padding;
+		}
+		debug.log(msg);			
 	}
 }
 
@@ -71,4 +78,17 @@ Grid.prototype.toCompacted = function() {
 Grid.prototype.toCompactedString = function() {
 	var compacted = this.toCompacted();
 	return compacted.low.toString() + ':' + compacted.high.toString();
+}
+
+Grid.prototype.score = function() {
+	var score = 0;
+	this.eachCell(function(x, y, cell) {
+		if (cell) {
+			var rank = Math.log2(cell.value);
+			if (rank >= 2) {
+				score += (rank - 1) * (1 << rank);
+			}			
+		}
+	}); 
+	return score;
 }

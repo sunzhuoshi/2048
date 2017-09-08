@@ -187,15 +187,87 @@ GridCompacted.prototype.move = function(direction) {
 			break;
 	}
 	if (!result.equal(this)) {
-		debug.log('');
 		result.print();
 	}
-	debug.log('--------');
 	return result;
 }
 
-GridCompacted.prototype.print = function() {
-	this.toGrid().print();
+GridCompacted.prototype.print = function(padding) {
+	if (debug.on) {
+		this.toGrid().print(padding);		
+	}
+}
+
+GridCompacted.prototype.score = function() {
+	var score = 0;
+	score += GridCompacted.scoreTable[this.low & 0xFFFF];
+	score += GridCompacted.scoreTable[this.low >> 16 & 0xFFFF];
+	score += GridCompacted.scoreTable[this.high & 0xFFFF];
+	score += GridCompacted.scoreTable[this.high >> 16 & 0xFFFF];			
+	return score;
+}
+
+GridCompacted.prototype.getRank = function(x, y) {
+	if (0 <= x && x < 4 && 0 <= y && y < 4) {
+		var shift = (y * 4 + x) * 4;
+		if (shift < 32) {
+			return (this.low >> shift) & 0xF;
+		}
+		else {
+			return (this.high >> (shift - 32)) & 0xF;
+		}		
+	}
+	else {
+		return null;
+	}
+}
+
+GridCompacted.prototype.movesAvailable = function() {
+	if (0 == this.emptyCount()) {
+		for (var x=0; x<4; ++x) {
+			for (var y=0; y<4; ++y) {
+				var rank = this.getRank(x, y);
+				var rankNextX = this.getRank(x+1, y);
+				var rankNextY = this.getRank(x, y+1);
+				if (rank == rankNextX || rank == rankNextY) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+GridCompacted.prototype.addRandomTile = function() {
+	var emptyCount = this.emptyCount();
+	var emptyIndex = -1;
+	var targetIndex = Math.floor(Math.random() * emptyCount);
+	var targetRank = Math.random() < 0.9 ? 1 : 2;
+	
+	debug.log('#### add random tile, rank: ' + targetRank + ', index: ' + targetIndex);
+	this.print('');
+	for (var i=0; i<8; ++i) {
+		var rank = (this.low >> (i * 4)) & 0xF;
+		if (0 == rank) {
+			emptyIndex ++;
+			if (emptyIndex == targetIndex) {
+				this.low |= targetRank << (i * 4);
+			}
+		}
+	}
+	for (var i=0; i<8; ++i) {
+		var rank = (this.high >> (i * 4)) & 0xF;
+		if (0 == rank) {
+			emptyIndex ++;
+			if (emptyIndex == targetIndex) {
+				this.high |= targetRank << (i * 4);
+			}
+		}		
+	}	
+	this.print();
 }
 
 GridCompacted.fromRow = function(row, index) {
@@ -236,6 +308,7 @@ GridCompacted.reverseRow = function(row) {
 }
 
 GridCompacted.init = function() {
+	this.scoreTable = [];
 	this.heuristicScoreTable = [];
 	this.rowLeftTable = [];
 	this.rowRightTable = [];
@@ -250,7 +323,16 @@ GridCompacted.init = function() {
 			(row >> 12) & 0xF
 		];
 		
-		this.heuristicScoreTable[row] = AI.heuristicEvaluationRow(row);
+        var score = 0.0;
+        for (var i = 0; i < 4; ++i) {
+            var rank = line[i];
+            if (rank >= 2) {
+                score += (rank - 1) * (1 << rank);
+            }
+        }
+        this.scoreTable[row] = score;		
+		
+		this.heuristicScoreTable[row] = AI_em.heuristicEvaluationRow(row);
 		
 		for (var i=0; i<3; ++i) {
 			var j;
