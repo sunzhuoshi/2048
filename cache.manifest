@@ -18,14 +18,21 @@ img/tile-super.png
 meta/apple-touch-icon.png
 
 # scripts
+js/debug.js
+js/ai_em.js
+js/ai_mc.js
 js/animframe_polyfill.js
 js/application.js
 js/bind_polyfill.js
 js/classlist_polyfill.js
 js/game_manager.js
+js/game_manager_ext.js
 js/grid.js
+js/grid_compacted.js
+js/grid_ext.js
 js/html_actuator.js
 js/keyboard_input_manager.js
+js/keyboard_input_manager_ext.js
 js/local_storage_manager.js
 js/tile.js
 

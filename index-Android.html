@@ -71,6 +71,16 @@
 
     <p class="game-explanation">
         <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the cards. When two cards with the same icon touch, they <strong>evolve into one!</strong>
+	<hr style="
+		margin-top: 5px;
+		margin-bottom: 20px;
+	">
+    <div style="overflow: hidden">
+		<strong>Helper:</strong>
+		<a class="hint-button">Hint</a>
+		<strong id="hint"></strong>
+		<a class="auto-play-button">Auto Play</a>
+	</div>
     </p>
     <hr>
     <p>
@@ -83,16 +93,22 @@
         <a href="http://padpadblog.com" target="_blank">Puzzle and Dragons blog</a>, <a href="http://bbs.pndchina.com/" target="_blank">PNDChina</a>
     </p>
 </div>
-
+<script src="js/debug.js"></script>  
+<script src="js/ai_em.js"></script>
+<script src="js/ai_mc.js"></script>  
 <script src="js/bind_polyfill.js"></script>
 <script src="js/classlist_polyfill.js"></script>
 <script src="js/animframe_polyfill.js"></script>
 <script src="js/keyboard_input_manager.js"></script>
+<script src="js/keyboard_input_manager_ext.js"></script>  
 <script src="js/html_actuator.js"></script>
 <script src="js/grid.js"></script>
+<script src="js/grid_compacted.js"></script>  
+<script src="js/grid_ext.js"></script>
 <script src="js/tile.js"></script>
 <script src="js/local_storage_manager.js"></script>
 <script src="js/game_manager.js"></script>
+<script src="js/game_manager_ext.js"></script>  
 <script src="js/application.js"></script>
 </body>
 </html>
