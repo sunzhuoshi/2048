@@ -1,1 +1,15 @@
 .sass-cache/
+
+/.idea/
+
+*.DS_Store
+
+/archive/
+
+xcuserdata
+
+/proj.android/bin/
+
+/proj.android/gen/
+
+/proj.android/assets/
