@@ -561,6 +561,30 @@ hr {
 .game-explanation {
   margin-top: 50px; }
 
+.replay-container {
+	display: none;
+	margin-top: 35px;
+}  
+
+.ai-container {
+	display: none;
+}
+
+.replay-container a {
+display: inline-block;
+background: #8f7a66;
+border-radius: 3px;
+padding: 0 20px;
+text-decoration: none;
+color: #f9f6f2;
+height: 40px;
+line-height: 42px;}    
+
+.share-replay-button {
+	float: right;
+}
+
+
 @media screen and (max-width: 520px) {
   html, body {
     font-size: 15px; }
@@ -799,6 +823,11 @@ hr {
     line-height: 30px !important;
     margin-top: 90px !important; }
   .game-message .lower {
-    margin-top: 30px !important; } }
+    margin-top: 30px !important; } 
+	
+	.replay-container {
+		margin-top: 15px;
+	}	  	
+}
 
 

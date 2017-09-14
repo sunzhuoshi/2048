@@ -30,12 +30,17 @@
       <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
 	  <a class="restart-button">New Game</a>	
 	</div>
+	<div class="replay-container">
+		<a class="watch-replay-button">Watch replay</a>
+		<a class="share-replay-button">Share replay</a>
+	</div>
     <div class="game-container">
       <div class="game-message">
         <p></p>
         <div class="lower">
 	        <a class="keep-playing-button">Keep going</a>
-          <a class="retry-button">Try again</a>
+			<a class="retry-button">Try again</a>
+			<a class="watch-replay-button">Watch replay</a>		  
         </div>
       </div>
 
@@ -73,22 +78,24 @@
 
     <p class="game-explanation">
       <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
-	<hr style="
-		margin-top: 5px;
-		margin-bottom: 20px;
-	">
-    <div style="overflow: hidden">
-		<strong>AI:</strong>
-		Algorithm 
-		<select id="algorithm">
-			<option value="em" selected="selected">Expectimax</option>							
-			<option value="omc">Monte Carlo</option>
-		</select>
-		<a class="hint-button">Hint</a>
-		<strong id="hint"></strong>
-		<a class="auto-play-button">Auto Play</a>
-	</div>
 	</p>
+	<div class="ai-container">
+		<hr style="
+			margin-top: 5px;
+			margin-bottom: 20px;
+		">
+		<div style="overflow: hidden">
+			<strong>AI:</strong>
+			Algorithm 
+			<select id="algorithm">
+				<option value="em" selected="selected">Expectimax</option>							
+				<option value="omc">Monte Carlo</option>
+			</select>
+			<a class="hint-button">Hint</a>
+			<strong id="hint"></strong>
+			<a class="auto-play-button">Auto Play</a>
+		</div>
+	</div>
 	<hr>
     <p>
     <strong class="important">Note:</strong> This site is the official version of 2048. You can play it on your phone via <a href="http://git.io/2048">http://git.io/2048.</a> All other apps or sites are derivatives or fakes, and should be used with caution.
@@ -107,6 +114,7 @@
   <script src="js/keyboard_input_manager.js"></script>
   <script src="js/keyboard_input_manager_ext.js"></script>  
   <script src="js/html_actuator.js"></script>
+  <script src="js/html_actuator_ext.js"></script>  
   <script src="js/grid.js"></script>
   <script src="js/grid_compacted.js"></script>  
   <script src="js/grid_ext.js"></script>
