@@ -1,20 +1,15 @@
 var OriginalGameManagerSetup = GameManager.prototype.setup;
 
+GameManager.aiMoveInterval = 600;
+
 GameManager.prototype.setup = function() {
-	OriginalGameManagerSetup.apply(this, arguments);
 	if (!GameManager._instance) {
 		GameManager._instance = this;		
 	}
-	this.aiPlayFlag = false;
+	this.aiPlaying = false;
 	this.events = {};	
-	GridCompacted.init();
-	
-	this.on('start_ai_play', function() {
-		document.querySelector(KeyboardInputManager.SELECTOR_AUTO_PLAY_BUTTON).innerHTML = KeyboardInputManager.BUTTON_TEXT_STOP;
-	});
-	this.on('stop_ai_play', function() {
-		document.querySelector(KeyboardInputManager.SELECTOR_AUTO_PLAY_BUTTON).innerHTML = KeyboardInputManager.BUTTON_TEXT_AUTO_PLAY;		
-	});	
+	GridCompacted.init();	
+	OriginalGameManagerSetup.apply(this, arguments);	
 }
 	
 GameManager.instance = function () {
@@ -51,7 +46,7 @@ GameManager.prototype.getBestMove = function(algorithm) {
 }
 
 GameManager.prototype.aiPlayNextMove = function(algorithm) {
-	if (this.aiPlayFlag) {
+	if (this.aiPlaying) {
 		var bestMove = this.getBestMove(algorithm);
 
 		if (0 <= bestMove) {
@@ -66,34 +61,26 @@ GameManager.prototype.aiPlayNextMove = function(algorithm) {
 			}
 		}
 		if (this.over) {
-			this._setAIPlayFlag(false);
+			this._setaiPlaying(false);
 		}
 		else {
 			var self = this;
 			setTimeout(function(){
 				self.aiPlayNextMove(algorithm);
-			}, 500);					
+			}, GameManager.aiMoveInterval);					
 		}
 		// clear hint content
 		document.getElementById('hint').innerHTML = '';		
 	}
 }
 
-GameManager.prototype._setAIPlayFlag = function(flag) {
-	var oldFlag = this.aiPlayFlag;
-	this.aiPlayFlag = flag;
-	if (oldFlag != flag) {
-		if (flag) {
-			this.emit('start_ai_play');
-		}
-		else {
-			this.emit('stop_ai_play');
-		}
-	}
+GameManager.prototype._setAiPlaying = function(aiPlaying) {
+	this.aiPlaying = aiPlaying;
+	this.actuator.updateAutoPlayButtonText(this.aiPlaying);	
 }
 
 GameManager.prototype.autoPlay = function(algorithm) {
-	this._setAIPlayFlag(!this.aiPlayFlag);
+	this._setAiPlaying(!this.aiPlaying);
 	this.aiPlayNextMove(algorithm);
 }
 

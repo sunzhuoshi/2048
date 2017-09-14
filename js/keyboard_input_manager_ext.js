@@ -1,9 +1,5 @@
 var OriginalKeyboardInputManagerListen = KeyboardInputManager.prototype.listen;
 
-KeyboardInputManager.BUTTON_TEXT_AUTO_PLAY = 'Auto Play';
-KeyboardInputManager.BUTTON_TEXT_STOP = 'Stop';
-KeyboardInputManager.SELECTOR_AUTO_PLAY_BUTTON = '.auto-play-button';
-
 KeyboardInputManager.prototype.getAlgorithm = function() {
 	var select = document.getElementById('algorithm');
 	return select.options[select.selectedIndex].value;
