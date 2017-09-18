@@ -7,9 +7,15 @@ GameManager.prototype.setup = function() {
 		GameManager._instance = this;		
 	}
 	this._setAiPlaying(false);
-	this.events = {};	
-	GridCompacted.init();	
-	OriginalGameManagerSetup.apply(this, arguments);	
+	this.actuator.updateHintDirection('');		
+	
+	OriginalGameManagerSetup.apply(this, arguments);		
+	if (!this.setupCalled) {
+		this.inputManager.on('autoPlay', this.autoPlay.bind(this));
+		this.inputManager.on('showHint', this.showHint.bind(this));
+		GridCompacted.init();			
+		this.setupCalled = true;
+	} 
 }
 	
 GameManager.instance = function () {
@@ -61,7 +67,7 @@ GameManager.prototype.aiPlayNextMove = function(algorithm) {
 			}
 		}
 		if (this.over) {
-			this._setaiPlaying(false);
+			this._setAiPlaying(false);
 		}
 		else {
 			var self = this;
@@ -70,7 +76,7 @@ GameManager.prototype.aiPlayNextMove = function(algorithm) {
 			}, GameManager.aiMoveInterval);					
 		}
 		// clear hint content
-		document.getElementById('hint').innerHTML = '';	
+		this.actuator.updateHintDirection('');
 	}
 }
 
@@ -82,6 +88,10 @@ GameManager.prototype._setAiPlaying = function(aiPlaying) {
 GameManager.prototype.autoPlay = function(algorithm) {
 	this._setAiPlaying(!this.aiPlaying);
 	this.aiPlayNextMove(algorithm);
+}
+
+GameManager.prototype.showHint = function(algorithm) {
+	this.actuator.updateHintDirection(this.getBestMove(algorithm));
 }
 
 GameManager.prototype.moveGrid = function (grid, direction) {
@@ -153,19 +163,3 @@ GameManager.prototype.movesAvailableOfGrid = function(grid) {
 	this.grid = originalGrid;
 	return result;
 }
-
-GameManager.prototype.on = function (event, callback) {
-  if (!this.events[event]) {
-    this.events[event] = [];
-  }
-  this.events[event].push(callback);
-};
-
-GameManager.prototype.emit = function (event, data) {
-  var callbacks = this.events[event];
-  if (callbacks) {
-    callbacks.forEach(function (callback) {
-      callback(data);
-    });
-  }
-};
