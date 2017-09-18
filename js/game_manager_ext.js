@@ -6,7 +6,7 @@ GameManager.prototype.setup = function() {
 	if (!GameManager._instance) {
 		GameManager._instance = this;		
 	}
-	this.aiPlaying = false;
+	this._setAiPlaying(false);
 	this.events = {};	
 	GridCompacted.init();	
 	OriginalGameManagerSetup.apply(this, arguments);	
@@ -70,7 +70,7 @@ GameManager.prototype.aiPlayNextMove = function(algorithm) {
 			}, GameManager.aiMoveInterval);					
 		}
 		// clear hint content
-		document.getElementById('hint').innerHTML = '';		
+		document.getElementById('hint').innerHTML = '';	
 	}
 }
 
