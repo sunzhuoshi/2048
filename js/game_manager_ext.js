@@ -1,20 +1,21 @@
 var OriginalGameManagerSetup = GameManager.prototype.setup;
 
+GameManager.aiMoveInterval = 600;
+
 GameManager.prototype.setup = function() {
-	OriginalGameManagerSetup.apply(this, arguments);
 	if (!GameManager._instance) {
 		GameManager._instance = this;		
 	}
-	this.aiPlayFlag = false;
-	this.events = {};	
-	GridCompacted.init();
+	this._setAiPlaying(false);
+	this.actuator.updateHintDirection('');		
 	
-	this.on('start_ai_play', function() {
-		document.querySelector(KeyboardInputManager.SELECTOR_AUTO_PLAY_BUTTON).innerHTML = KeyboardInputManager.BUTTON_TEXT_STOP;
-	});
-	this.on('stop_ai_play', function() {
-		document.querySelector(KeyboardInputManager.SELECTOR_AUTO_PLAY_BUTTON).innerHTML = KeyboardInputManager.BUTTON_TEXT_AUTO_PLAY;		
-	});	
+	OriginalGameManagerSetup.apply(this, arguments);		
+	if (!this.setupCalled) {
+		this.inputManager.on('autoPlay', this.autoPlay.bind(this));
+		this.inputManager.on('showHint', this.showHint.bind(this));
+		GridCompacted.init();			
+		this.setupCalled = true;
+	} 
 }
 	
 GameManager.instance = function () {
@@ -51,50 +52,46 @@ GameManager.prototype.getBestMove = function(algorithm) {
 }
 
 GameManager.prototype.aiPlayNextMove = function(algorithm) {
-	if (this.aiPlayFlag) {
+	if (this.aiPlaying) {
 		var bestMove = this.getBestMove(algorithm);
 
 		if (0 <= bestMove) {
 			this.move(bestMove);	  
 		}
 		else {
-			// eat the last empty cell, even no sense 
-			if (this.grid.cellsAvailable()) {
+			// do the last try, even no sense 
+			if (this.movesAvailable()) {
 				for (var direction=0; direction<4; ++direction) {
 					GameManager.instance().move(direction);
 				}
 			}
 		}
 		if (this.over) {
-			this._setAIPlayFlag(false);
+			this._setAiPlaying(false);
 		}
 		else {
 			var self = this;
 			setTimeout(function(){
 				self.aiPlayNextMove(algorithm);
-			}, 500);					
+			}, GameManager.aiMoveInterval);					
 		}
 		// clear hint content
-		document.getElementById('hint').innerHTML = '';		
+		this.actuator.updateHintDirection('');
 	}
 }
 
-GameManager.prototype._setAIPlayFlag = function(flag) {
-	var oldFlag = this.aiPlayFlag;
-	this.aiPlayFlag = flag;
-	if (oldFlag != flag) {
-		if (flag) {
-			this.emit('start_ai_play');
-		}
-		else {
-			this.emit('stop_ai_play');
-		}
-	}
+GameManager.prototype._setAiPlaying = function(aiPlaying) {
+	this.aiPlaying = aiPlaying;
+	this.actuator.updateAutoPlayButtonText(this.aiPlaying);	
 }
 
 GameManager.prototype.autoPlay = function(algorithm) {
-	this._setAIPlayFlag(!this.aiPlayFlag);
+	this._setAiPlaying(!this.aiPlaying);
 	this.aiPlayNextMove(algorithm);
+}
+
+GameManager.prototype.showHint = function(algorithm) {
+	this.actuator.updateHintDirection(this.getBestMove(algorithm));
 }
 
 GameManager.prototype.moveGrid = function (grid, direction) {
@@ -166,19 +163,3 @@ GameManager.prototype.movesAvailableOfGrid = function(grid) {
 	this.grid = originalGrid;
 	return result;
 }
-
-GameManager.prototype.on = function (event, callback) {
-  if (!this.events[event]) {
-    this.events[event] = [];
-  }
-  this.events[event].push(callback);
-};
-
-GameManager.prototype.emit = function (event, data) {
-  var callbacks = this.events[event];
-  if (callbacks) {
-    callbacks.forEach(function (callback) {
-      callback(data);
-    });
-  }
-};

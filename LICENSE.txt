@@ -1,5 +1,8 @@
 The MIT License (MIT)
 
+Copyright (c) 2017 Nneonneo
+Copyright (c) 2017 Ronzil
+Copyright (c) 2017 Sun Zhuoshi
 Copyright (c) 2014 Gabriele Cirulli
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
