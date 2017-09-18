@@ -550,7 +550,7 @@ hr {
 .bitcoin_qrcode {
     margin: auto;
     display: block;
-    width: 61.8%;
+    width: 30%;
 }
  
 /*>>*/
@@ -607,7 +607,11 @@ hr {
 	padding: 0; 
     display: block;	
     box-sizing: border-box;
-    margin-top: 10px; }	
+    margin-top: 10px; }
+
+  .bitcoin_qrcode {
+    width: 61.8%;
+  }
   /*>>*/
 
   .game-container {
