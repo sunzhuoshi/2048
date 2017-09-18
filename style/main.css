@@ -514,7 +514,7 @@ hr {
   float: right; }
   
  
- /*<< Manually add */ 	
+/*<< Manually add */
 .hint-button {
   display: inline-block;
   background: #526017;
@@ -545,6 +545,12 @@ hr {
 	font-weight: bold;
 	margin: 0 0.5em;
 	color: #526017
+}
+
+.bitcoin_qrcode {
+    margin: auto;
+    display: block;
+    width: 61.8%;
 }
  
 /*>>*/
