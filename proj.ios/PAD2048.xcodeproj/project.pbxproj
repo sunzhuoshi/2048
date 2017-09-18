@@ -22,8 +22,6 @@
 		653FBD5F18E3EAE200449414 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 653FBD4118E3EAE100449414 /* UIKit.framework */; };
 		653FBD6718E3EAE200449414 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 653FBD6518E3EAE200449414 /* InfoPlist.strings */; };
 		653FBD6918E3EAE200449414 /* PAD2048Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 653FBD6818E3EAE200449414 /* PAD2048Tests.m */; };
-		6577DCB818E407AE00C4EDDA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6577DCB718E407AE00C4EDDA /* GameKit.framework */; };
-		6577DCBA18E407BE00C4EDDA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6577DCB918E407BE00C4EDDA /* StoreKit.framework */; };
 		6577DCCF18E40A8600C4EDDA /* img in Resources */ = {isa = PBXBuildFile; fileRef = 6577DCCA18E40A8600C4EDDA /* img */; };
 		6577DCD018E40A8600C4EDDA /* js in Resources */ = {isa = PBXBuildFile; fileRef = 6577DCCB18E40A8600C4EDDA /* js */; };
 		6577DCD118E40A8600C4EDDA /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6577DCCC18E40A8600C4EDDA /* LICENSE.txt */; };
@@ -64,8 +62,6 @@
 		653FBD6418E3EAE200449414 /* PAD2048Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PAD2048Tests-Info.plist"; sourceTree = "<group>"; };
 		653FBD6618E3EAE200449414 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		653FBD6818E3EAE200449414 /* PAD2048Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAD2048Tests.m; sourceTree = "<group>"; };
-		6577DCB718E407AE00C4EDDA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		6577DCB918E407BE00C4EDDA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6577DCCA18E40A8600C4EDDA /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; name = img; path = ../../img; sourceTree = "<group>"; };
 		6577DCCB18E40A8600C4EDDA /* js */ = {isa = PBXFileReference; lastKnownFileType = folder; name = js; path = ../../js; sourceTree = "<group>"; };
 		6577DCCC18E40A8600C4EDDA /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../../LICENSE.txt; sourceTree = "<group>"; };
@@ -85,9 +81,7 @@
 				6577DCD618E4707C00C4EDDA /* libFlurry_4.3.2.a in Frameworks */,
 				653FBD4018E3EAE100449414 /* CoreGraphics.framework in Frameworks */,
 				653FBD4218E3EAE100449414 /* UIKit.framework in Frameworks */,
-				6577DCBA18E407BE00C4EDDA /* StoreKit.framework in Frameworks */,
 				653FBD3E18E3EAE100449414 /* Foundation.framework in Frameworks */,
-				6577DCB818E407AE00C4EDDA /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,8 +123,6 @@
 				6577DCD918E4717F00C4EDDA /* SystemConfiguration.framework */,
 				6577DCD718E4714200C4EDDA /* CFNetwork.framework */,
 				6577DCD518E4707C00C4EDDA /* libFlurry_4.3.2.a */,
-				6577DCB918E407BE00C4EDDA /* StoreKit.framework */,
-				6577DCB718E407AE00C4EDDA /* GameKit.framework */,
 				653FBD3D18E3EAE100449414 /* Foundation.framework */,
 				653FBD3F18E3EAE100449414 /* CoreGraphics.framework */,
 				653FBD4118E3EAE100449414 /* UIKit.framework */,
@@ -246,16 +238,18 @@
 				TargetAttributes = {
 					653FBD3918E3EAE100449414 = {
 						DevelopmentTeam = RKJZ96SH2X;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
 					653FBD5A18E3EAE200449414 = {
+						DevelopmentTeam = RKJZ96SH2X;
 						TestTargetID = 653FBD3918E3EAE100449414;
 					};
 				};
@@ -381,6 +375,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = RKJZ96SH2X;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -395,7 +390,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -417,8 +412,10 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = RKJZ96SH2X;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -427,7 +424,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -438,8 +435,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEVELOPMENT_TEAM = RKJZ96SH2X;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PAD2048/PAD2048-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -448,13 +447,14 @@
 					"$(SRCROOT)/PAD2048/Flurry",
 				);
 				INFOPLIST_FILE = "PAD2048/PAD2048-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PAD2048/Flurry/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "PAD2048 App Store";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -464,8 +464,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = RKJZ96SH2X;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PAD2048/PAD2048-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -474,13 +476,14 @@
 					"$(SRCROOT)/PAD2048/Flurry",
 				);
 				INFOPLIST_FILE = "PAD2048/PAD2048-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PAD2048/Flurry/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e5b43a75-7e68-458a-a6b2-d891a74dab6e";
+				PROVISIONING_PROFILE_SPECIFIER = "PAD2048 App Store";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
