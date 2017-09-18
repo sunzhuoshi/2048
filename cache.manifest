@@ -31,6 +31,7 @@ js/grid.js
 js/grid_compacted.js
 js/grid_ext.js
 js/html_actuator.js
+js/html_actuator_ext.js
 js/keyboard_input_manager.js
 js/keyboard_input_manager_ext.js
 js/local_storage_manager.js
