@@ -59,8 +59,8 @@ GameManager.prototype.aiPlayNextMove = function(algorithm) {
 			this.move(bestMove);	  
 		}
 		else {
-			// eat the last empty cell, even no sense 
-			if (this.grid.cellsAvailable()) {
+			// do the last try, even no sense 
+			if (this.movesAvailable()) {
 				for (var direction=0; direction<4; ++direction) {
 					GameManager.instance().move(direction);
 				}
