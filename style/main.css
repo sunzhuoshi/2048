@@ -114,7 +114,7 @@ hr {
   border: none;
   border-bottom: 1px solid #d8d4d0;
   margin-top: 20px;
-  margin-bottom: 30px; }
+  margin-bottom: 20px; }
 
 .container {
   width: 500px;
@@ -540,7 +540,7 @@ hr {
   float: right; 
 } 
 
-#hint {
+.hint-text {
 	font-size: 1.5em;
 	font-weight: bold;
 	margin: 0 0.5em;
@@ -553,6 +553,27 @@ hr {
     width: 30%;
 }
  
+.helper-arrow {
+	display: block;
+	width: 0%;
+	height: 0%;
+	margin-left: auto;
+	margin-right: auto;
+} 
+ 
+.helper-arrow-down {
+	border-top: 24px solid #526017;
+	border-left: 24px solid transparent;
+	border-right: 24px solid transparent;
+	margin-top: -24px;
+} 
+
+.helper-arrow-up {
+	border-bottom: 24px solid #526017;
+	border-left: 24px solid transparent;
+	border-right: 24px solid transparent;
+	margin-top: -24px;
+} 
 /*>>*/
 
 .game-explanation {
@@ -597,21 +618,22 @@ hr {
 	
   /*<< Manually add */
    .hint-button {
-	width: 30%;
-    padding: 0;
-    box-sizing: border-box;
-    margin-top: 10px; }
+    box-sizing: border-box; 
+  }
 			
   .auto-play-button {
 	width: 30%;
 	padding: 0; 
-    display: block;	
-    box-sizing: border-box;
-    margin-top: 10px; }
+    box-sizing: border-box; 
+  }
 
   .bitcoin_qrcode {
     width: 61.8%;
   }
+ 
+  .helper-arrow {
+	  margin-top: 15px;
+  }	  
   /*>>*/
 
   .game-container {

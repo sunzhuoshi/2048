@@ -13,6 +13,8 @@ GameManager.prototype.setup = function() {
 	if (!this.setupCalled) {
 		this.inputManager.on('autoPlay', this.autoPlay.bind(this));
 		this.inputManager.on('showHint', this.showHint.bind(this));
+		this.inputManager.on('helperArrowDown', this.helperArrowDown.bind(this));
+		this.inputManager.on('helperArrowUp', this.helperArrowUp.bind(this));
 		GridCompacted.init();			
 		this.setupCalled = true;
 	} 
@@ -162,4 +164,14 @@ GameManager.prototype.movesAvailableOfGrid = function(grid) {
 	result = this.movesAvailable();
 	this.grid = originalGrid;
 	return result;
+}
+
+GameManager.prototype.helperArrowDown = function() {
+	this.actuator.showTopHelperContainer(false);
+	this.actuator.showBottomHelperContainer(true);
+}
+
+GameManager.prototype.helperArrowUp = function() {
+	this.actuator.showTopHelperContainer(true);
+	this.actuator.showBottomHelperContainer(false);	
 }
