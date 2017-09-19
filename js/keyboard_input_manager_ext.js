@@ -10,8 +10,12 @@ KeyboardInputManager.prototype.getAlgorithm = function() {
 
 KeyboardInputManager.prototype.listen = function() {
 	OriginalKeyboardInputManagerListen.apply(this, arguments);
-	this.bindButtonPress(".auto-play-button", this.autoPlay);
-	this.bindButtonPress(".hint-button", this.showHint);
+	this.bindButtonPress('.auto-play-button', this.autoPlay);
+	this.bindButtonPress('.hint-button', this.showHint);
+	this.bindButtonPress('.helper-arrow-down', this.helperArrowDown);
+	this.bindButtonPress('.helper-arrow-up', this.helperArrowUp);
+	this.bindButtonPress('.confirm-yes-button', this.confirmYes);
+	this.bindButtonPress('.confirm-no-button', this.confirmNo);
 }
 
 KeyboardInputManager.prototype.autoPlay = function(event) {
@@ -22,4 +26,24 @@ KeyboardInputManager.prototype.autoPlay = function(event) {
 KeyboardInputManager.prototype.showHint = function(event) {
 	event.preventDefault();	
 	this.emit('showHint', this.getAlgorithm());
+}
+
+KeyboardInputManager.prototype.helperArrowDown = function(event) {
+	event.preventDefault();
+	this.emit('helperArrowDown');
+}
+
+KeyboardInputManager.prototype.helperArrowUp = function(event) {
+	event.preventDefault();
+	this.emit('helperArrowUp');
+}
+
+KeyboardInputManager.prototype.confirmYes = function(event) {
+	event.preventDefault();
+	this.emit('confirmYes');
+}
+
+KeyboardInputManager.prototype.confirmNo = function(event) {
+	event.preventDefault();
+	this.emit('confirmNo');
 }

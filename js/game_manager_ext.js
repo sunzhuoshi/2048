@@ -1,6 +1,6 @@
 var OriginalGameManagerSetup = GameManager.prototype.setup;
 
-GameManager.aiMoveInterval = 600;
+GameManager.aiMoveInterval = 500;
 
 GameManager.prototype.setup = function() {
 	if (!GameManager._instance) {
@@ -13,6 +13,10 @@ GameManager.prototype.setup = function() {
 	if (!this.setupCalled) {
 		this.inputManager.on('autoPlay', this.autoPlay.bind(this));
 		this.inputManager.on('showHint', this.showHint.bind(this));
+		this.inputManager.on('helperArrowDown', this.helperArrowDown.bind(this));
+		this.inputManager.on('helperArrowUp', this.helperArrowUp.bind(this));
+		this.inputManager.on('confirmYes', this.confirmYes.bind(this));
+		this.inputManager.on('confirmNo', this.confirmNo.bind(this));		
 		GridCompacted.init();			
 		this.setupCalled = true;
 	} 
@@ -163,3 +167,37 @@ GameManager.prototype.movesAvailableOfGrid = function(grid) {
 	this.grid = originalGrid;
 	return result;
 }
+
+GameManager.prototype.helperArrowDown = function() {
+	this.actuator.showTopHelperContainer(false);
+	this.actuator.showBottomHelperContainer(true);
+}
+
+GameManager.prototype.helperArrowUp = function() {
+	this.actuator.showTopHelperContainer(true);
+	this.actuator.showBottomHelperContainer(false);	
+}
+
+GameManager.prototype.realRestart = GameManager.prototype.restart;
+
+GameManager.prototype.restart = function () {
+	// only show confirm UI when score >= 500
+	if (this.score >= 500) {
+		if (this.aiPlaying) {
+			this._setAiPlaying(false);
+		}
+		this.actuator.confirmRestartGame();		
+	}
+	else {
+		this.realRestart();
+	}
+};
+
+GameManager.prototype.confirmYes = function() {
+	this.realRestart();
+}
+
+GameManager.prototype.confirmNo = function() {
+	this.actuator.continueGame(); 
+}
+

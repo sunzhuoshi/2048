@@ -114,7 +114,7 @@ hr {
   border: none;
   border-bottom: 1px solid #d8d4d0;
   margin-top: 20px;
-  margin-bottom: 30px; }
+  margin-bottom: 20px; }
 
 .container {
   width: 500px;
@@ -183,8 +183,8 @@ hr {
       display: block;
       margin-top: 59px; }
     .game-container .game-message a {
-      display: inline-block;
-      background: #8f7a66;
+      display: none;
+      background: #526017;
       border-radius: 3px;
       padding: 0 20px;
       text-decoration: none;
@@ -192,16 +192,24 @@ hr {
       height: 40px;
       line-height: 42px;
       margin-left: 9px; }
-      .game-container .game-message a.keep-playing-button {
-        display: none; }
+	  
     .game-container .game-message.game-won {
       background: rgba(237, 194, 46, 0.5);
       color: #f9f6f2; }
-      .game-container .game-message.game-won a.keep-playing-button {
+      .game-container .game-message.game-won a.keep-playing-button, .game-container .game-message.game-won a.retry-button{
         display: inline-block; }
-    .game-container .game-message.game-won, .game-container .game-message.game-over {
+    .game-container .game-message.game-over a.retry-button{
+      display: inline-block; }		
+	.game-container .game-message.new-game a.confirm-yes-button, .game-container .game-message.new-game a.confirm-no-button{
+      display: inline-block; }		
+    .game-container .game-message.game-won, .game-container .game-message.game-over, .game-container .game-message.new-game{
       display: block; }
 
+.confirm-yes-button, .confirm-no-button {
+	margin: 0px 20px;
+	width: 25%;
+}		
+		
 .grid-container {
   position: absolute;
   z-index: 1; }
@@ -540,7 +548,7 @@ hr {
   float: right; 
 } 
 
-#hint {
+.hint-text {
 	font-size: 1.5em;
 	font-weight: bold;
 	margin: 0 0.5em;
@@ -553,6 +561,27 @@ hr {
     width: 30%;
 }
  
+.helper-arrow {
+	display: block;
+	width: 0%;
+	height: 0%;
+	margin-left: auto;
+	margin-right: auto;
+} 
+ 
+.helper-arrow-down {
+	border-top: 24px solid #526017;
+	border-left: 24px solid transparent;
+	border-right: 24px solid transparent;
+	margin-top: -24px;
+} 
+
+.helper-arrow-up {
+	border-bottom: 24px solid #526017;
+	border-left: 24px solid transparent;
+	border-right: 24px solid transparent;
+	margin-top: -24px;
+} 
 /*>>*/
 
 .game-explanation {
@@ -597,21 +626,22 @@ hr {
 	
   /*<< Manually add */
    .hint-button {
-	width: 30%;
-    padding: 0;
-    box-sizing: border-box;
-    margin-top: 10px; }
+    box-sizing: border-box; 
+  }
 			
   .auto-play-button {
 	width: 30%;
 	padding: 0; 
-    display: block;	
-    box-sizing: border-box;
-    margin-top: 10px; }
+    box-sizing: border-box; 
+  }
 
   .bitcoin_qrcode {
     width: 61.8%;
   }
+ 
+  .helper-arrow {
+	  margin-top: 15px;
+  }	  
   /*>>*/
 
   .game-container {
@@ -659,25 +689,16 @@ hr {
         display: block;
         margin-top: 59px; }
       .game-container .game-message a {
-        display: inline-block;
-        background: #8f7a66;
         border-radius: 3px;
         padding: 0 20px;
-        text-decoration: none;
-        color: #f9f6f2;
         height: 40px;
         line-height: 42px;
         margin-left: 9px; }
-        .game-container .game-message a.keep-playing-button {
-          display: none; }
-      .game-container .game-message.game-won {
-        background: rgba(237, 194, 46, 0.5);
-        color: #f9f6f2; }
-        .game-container .game-message.game-won a.keep-playing-button {
-          display: inline-block; }
-      .game-container .game-message.game-won, .game-container .game-message.game-over {
-        display: block; }
-
+		
+  .confirm-yes-button, .confirm-no-button {
+    width: auto;
+  }
+		
   .grid-container {
     position: absolute;
     z-index: 1; }

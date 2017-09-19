@@ -1,6 +1,8 @@
 HTMLActuator.BUTTON_TEXT_AUTO_PLAY = 'Auto Play';
 HTMLActuator.BUTTON_TEXT_STOP = 'Stop';
 HTMLActuator.SELECTOR_AUTO_PLAY_BUTTON = '.auto-play-button';
+HTMLActuator.HELPER_CONTAINER_TOP = 'helper-container-top';
+HTMLActuator.HELPER_CONTAINER_BOTTOM = 'helper-container-bottom';
 
 HTMLActuator.prototype.directionToSymbol = function(direction) {
 	return {
@@ -12,10 +14,12 @@ HTMLActuator.prototype.directionToSymbol = function(direction) {
 }
 
 HTMLActuator.prototype.updateAutoPlayButtonText = function(aiPlaying) {
-	if (!this.autoPlayButton) {
-		this.autoPlayButton = document.querySelector(HTMLActuator.SELECTOR_AUTO_PLAY_BUTTON);
+	if (!this.autoPlayButtons) {
+		this.autoPlayButtons = document.querySelectorAll(HTMLActuator.SELECTOR_AUTO_PLAY_BUTTON);
 	}
-	this.autoPlayButton.innerHTML = aiPlaying? HTMLActuator.BUTTON_TEXT_STOP: HTMLActuator.BUTTON_TEXT_AUTO_PLAY;
+	this.autoPlayButtons.forEach(function(button) {
+		button.innerHTML = aiPlaying? HTMLActuator.BUTTON_TEXT_STOP: HTMLActuator.BUTTON_TEXT_AUTO_PLAY;
+	});
 }
 
 HTMLActuator.prototype.updateHintDirection = function(direction) {
@@ -24,5 +28,30 @@ HTMLActuator.prototype.updateHintDirection = function(direction) {
 	if (!symbol) {
 		symbol = '';
 	}
-	document.getElementById('hint').innerHTML = symbol;	
+	document.querySelectorAll('.hint-text').forEach(function(element) {
+		element.innerHTML = symbol;
+	});
 }
+
+HTMLActuator.prototype.showTopHelperContainer = function(visible) {
+	document.getElementById(HTMLActuator.HELPER_CONTAINER_TOP).style.display = visible? 'block': 'none';
+}
+
+HTMLActuator.prototype.showBottomHelperContainer = function(visible) {
+	document.getElementById(HTMLActuator.HELPER_CONTAINER_BOTTOM).style.display = visible? 'block': 'none';
+}
+
+HTMLActuator.prototype.confirmRestartGame = function() {
+  this.clearMessage();
+  this.messageContainer.classList.add('new-game');
+  this.messageContainer.getElementsByTagName('p')[0].textContent = 'Restart Game?';
+}
+
+HTMLActuator.prototype._clearMessage_ = HTMLActuator.prototype.clearMessage; 
+
+HTMLActuator.prototype.clearMessage = function () {
+  this._clearMessage_.apply(this, arguments);
+  this.messageContainer.classList.remove("new-game");
+};
+
+
