@@ -13,7 +13,9 @@ KeyboardInputManager.prototype.listen = function() {
 	this.bindButtonPress('.auto-play-button', this.autoPlay);
 	this.bindButtonPress('.hint-button', this.showHint);
 	this.bindButtonPress('.helper-arrow-down', this.helperArrowDown);
-	this.bindButtonPress('.helper-arrow-up', this.helperArrowUp)
+	this.bindButtonPress('.helper-arrow-up', this.helperArrowUp);
+	this.bindButtonPress('.confirm-yes-button', this.confirmYes);
+	this.bindButtonPress('.confirm-no-button', this.confirmNo);
 }
 
 KeyboardInputManager.prototype.autoPlay = function(event) {
@@ -34,4 +36,14 @@ KeyboardInputManager.prototype.helperArrowDown = function(event) {
 KeyboardInputManager.prototype.helperArrowUp = function(event) {
 	event.preventDefault();
 	this.emit('helperArrowUp');
+}
+
+KeyboardInputManager.prototype.confirmYes = function(event) {
+	event.preventDefault();
+	this.emit('confirmYes');
+}
+
+KeyboardInputManager.prototype.confirmNo = function(event) {
+	event.preventDefault();
+	this.emit('confirmNo');
 }

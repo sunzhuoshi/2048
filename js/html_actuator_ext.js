@@ -40,3 +40,18 @@ HTMLActuator.prototype.showTopHelperContainer = function(visible) {
 HTMLActuator.prototype.showBottomHelperContainer = function(visible) {
 	document.getElementById(HTMLActuator.HELPER_CONTAINER_BOTTOM).style.display = visible? 'block': 'none';
 }
+
+HTMLActuator.prototype.confirmRestartGame = function() {
+  this.clearMessage();
+  this.messageContainer.classList.add('new-game');
+  this.messageContainer.getElementsByTagName('p')[0].textContent = 'Restart Game?';
+}
+
+HTMLActuator.prototype._clearMessage_ = HTMLActuator.prototype.clearMessage; 
+
+HTMLActuator.prototype.clearMessage = function () {
+  this._clearMessage_.apply(this, arguments);
+  this.messageContainer.classList.remove("new-game");
+};
+
+

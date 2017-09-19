@@ -183,8 +183,8 @@ hr {
       display: block;
       margin-top: 59px; }
     .game-container .game-message a {
-      display: inline-block;
-      background: #8f7a66;
+      display: none;
+      background: #526017;
       border-radius: 3px;
       padding: 0 20px;
       text-decoration: none;
@@ -192,16 +192,24 @@ hr {
       height: 40px;
       line-height: 42px;
       margin-left: 9px; }
-      .game-container .game-message a.keep-playing-button {
-        display: none; }
+	  
     .game-container .game-message.game-won {
       background: rgba(237, 194, 46, 0.5);
       color: #f9f6f2; }
-      .game-container .game-message.game-won a.keep-playing-button {
+      .game-container .game-message.game-won a.keep-playing-button, .game-container .game-message.game-won a.retry-button{
         display: inline-block; }
-    .game-container .game-message.game-won, .game-container .game-message.game-over {
+    .game-container .game-message.game-over a.retry-button{
+      display: inline-block; }		
+	.game-container .game-message.new-game a.confirm-yes-button, .game-container .game-message.new-game a.confirm-no-button{
+      display: inline-block; }		
+    .game-container .game-message.game-won, .game-container .game-message.game-over, .game-container .game-message.new-game{
       display: block; }
 
+.confirm-yes-button, .confirm-no-button {
+	margin: 0px 20px;
+	width: 25%;
+}		
+		
 .grid-container {
   position: absolute;
   z-index: 1; }
@@ -681,25 +689,16 @@ hr {
         display: block;
         margin-top: 59px; }
       .game-container .game-message a {
-        display: inline-block;
-        background: #8f7a66;
         border-radius: 3px;
         padding: 0 20px;
-        text-decoration: none;
-        color: #f9f6f2;
         height: 40px;
         line-height: 42px;
         margin-left: 9px; }
-        .game-container .game-message a.keep-playing-button {
-          display: none; }
-      .game-container .game-message.game-won {
-        background: rgba(237, 194, 46, 0.5);
-        color: #f9f6f2; }
-        .game-container .game-message.game-won a.keep-playing-button {
-          display: inline-block; }
-      .game-container .game-message.game-won, .game-container .game-message.game-over {
-        display: block; }
-
+		
+  .confirm-yes-button, .confirm-no-button {
+    width: auto;
+  }
+		
   .grid-container {
     position: absolute;
     z-index: 1; }
