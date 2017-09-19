@@ -141,6 +141,6 @@ KeyboardInputManager.prototype.bindButtonPress = function (selector, fn) {
   var self = this;
   document.querySelectorAll(selector).forEach(function(button) {
 	button.addEventListener("click", fn.bind(self));
-    button.addEventListener(this.eventTouchend, fn.bind(self));	  
+    button.addEventListener(self.eventTouchend, fn.bind(self));	  
   });
 };
