@@ -7,7 +7,8 @@ GameManager.prototype.setup = function() {
 		GameManager._instance = this;		
 	}
 	this._setAiPlaying(false);
-	this.actuator.updateHintDirection('');		
+	this.actuator.updateHintDirection('');	
+	this.pause = false;
 	
 	OriginalGameManagerSetup.apply(this, arguments);		
 	if (!this.setupCalled) {
@@ -19,7 +20,7 @@ GameManager.prototype.setup = function() {
 		this.inputManager.on('confirmNo', this.confirmNo.bind(this));		
 		GridCompacted.init();			
 		this.setupCalled = true;
-	} 
+	}
 }
 	
 GameManager.instance = function () {
@@ -186,6 +187,7 @@ GameManager.prototype.restart = function () {
 		if (this.aiPlaying) {
 			this._setAiPlaying(false);
 		}
+		this.pause = true;
 		this.actuator.confirmRestartGame();		
 	}
 	else {
@@ -198,6 +200,15 @@ GameManager.prototype.confirmYes = function() {
 }
 
 GameManager.prototype.confirmNo = function() {
-	this.actuator.continueGame(); 
+	this.actuator.continueGame();
+	this.pause = false;
 }
 
+GameManager.prototype._move_ = GameManager.prototype.move;
+
+GameManager.prototype.move = function(direction) {
+	if (this.pause) {
+		return;
+	}
+	this._move_.apply(this, arguments);
+}
