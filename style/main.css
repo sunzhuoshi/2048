@@ -570,17 +570,17 @@ hr {
 } 
  
 .helper-arrow-down {
-	border-top: 24px solid #526017;
-	border-left: 24px solid transparent;
-	border-right: 24px solid transparent;
-	margin-top: -24px;
+	border-top: 20px solid #526017;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	margin-top: -20px;
 } 
 
 .helper-arrow-up {
-	border-bottom: 24px solid #526017;
-	border-left: 24px solid transparent;
-	border-right: 24px solid transparent;
-	margin-top: -24px;
+	border-bottom: 20px solid #526017;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	margin-top: -20px;
 } 
 /*>>*/
 
