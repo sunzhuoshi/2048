@@ -1,88 +1,103 @@
 <!DOCTYPE html>
-<html manifest="cache.manifest">
 <head>
-    <meta charset="utf-8">
-    <title>PAD2048</title>
+  <meta charset="utf-8">
+  <title>PAD2048</title>
 
-    <link href="style/main.css" rel="stylesheet" type="text/css">
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+  <link href="style/main.css" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
 </head>
 <body>
-<div class="container">
+  <div class="container">
     <div class="heading">
-        <h1 class="title">PAD2048</h1>
-        <div class="scores-container">
-            <div class="score-container">0</div>
-            <div class="best-container">0</div>
-        </div>
+      <h1 class="title">PAD2048</h1>
+      <div class="scores-container">
+        <div class="score-container">0</div>
+        <div class="best-container">0</div>
+      </div>
     </div>
 
     <div class="above-game">
-        <p class="game-intro">Evolve the cards and get the <strong>Dragon Lord!</strong></p>
-        <a class="restart-button">New Game</a>
+      <p class="game-intro">Evolve the cards and get the <strong>Dragon Lord!</strong></p>
+      <a class="restart-button">New Game</a>
     </div>
-
+	<hr>
+	<div id="helper-container-top">	
+		<div style="display: flex; justify-content: space-between">
+			<div style="display: flex; align-items: center">
+			<strong>HELPER:&nbsp</strong>
+			<a class="hint-button">Hint</a>
+			<strong class="hint-text"></strong>
+			</div>
+			<a class="auto-play-button">Auto Play</a>
+		</div>
+		<a class="helper-arrow helper-arrow-down"></a>
+		<hr>
+	</div>
     <div class="game-container">
-        <div class="game-message">
-            <p></p>
-            <div class="lower">
-                <a class="keep-playing-button">Keep going</a>
-                <a class="retry-button">Try again</a>
-            </div>
+      <div class="game-message">
+        <p></p>
+        <div class="lower">
+	        <a class="keep-playing-button">Keep going</a>
+            <a class="retry-button">Try again</a>
+            <a class="confirm-yes-button">Yes</a>
+            <a class="confirm-no-button">No</a>
         </div>
+      </div>
 
-        <div class="grid-container">
-            <div class="grid-row">
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-            </div>
-            <div class="grid-row">
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-            </div>
-            <div class="grid-row">
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-            </div>
-            <div class="grid-row">
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-                <div class="grid-cell"></div>
-            </div>
+      <div class="grid-container">
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
         </div>
-
-        <div class="tile-container">
-
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
         </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+      </div>
+
+      <div class="tile-container">
+
+      </div>
     </div>
 
     <p class="game-explanation">
         <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the cards. When two cards with the same icon touch, they <strong>evolve into one!</strong>
-	<hr style="
-		margin-top: 5px;
-		margin-bottom: 20px;
-	">
-    <div style="overflow: hidden">
-		<strong>Helper:</strong>
-		<a class="hint-button">Hint</a>
-		<strong id="hint"></strong>
-		<a class="auto-play-button">Auto Play</a>
-	</div>
     </p>
     <hr>
+	<div id="helper-container-bottom" style="display: none">	
+		<div style="display: flex; justify-content: space-between">
+			<div style="display: flex; align-items: center">
+			<strong>HELPER:&nbsp</strong>
+			<a class="hint-button">Hint</a>
+			<strong class="hint-text"></strong>
+			</div>
+			<a class="auto-play-button">Auto Play</a>
+		</div>
+		<a class="helper-arrow helper-arrow-up"></a>			
+		<hr>
+	</div>
     <p>
         Created by <a href="http://weibo.com/234504683" target="_blank"><span style="font-family: Helvetica, sans-serif">春哥株式會社</span></a>, based on <a href="http://git.io/2048" target="_blank">2048</a> by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli</a>,
         and the original epic <a href="http://threesgame.com" target="_blank">Threes</a>.
@@ -90,7 +105,7 @@
     <hr>
     <p>
         Thanks to:<br>
-        <a href="http://padpadblog.com" target="_blank">Puzzle and Dragons blog</a>, <a href="http://bbs.pndchina.com/" target="_blank">PNDChina</a>
+        <a href="http://padpadblog.com" target="_blank">Puzzle and Dragons blog</a>, PNDChina
     </p>
 </div>
 <script src="js/debug.js"></script>  
