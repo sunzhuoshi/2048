@@ -555,10 +555,10 @@ hr {
 	color: #526017
 }
 
-.bitcoin_qrcode {
+.qrcode {
     margin: auto;
     display: block;
-    width: 30%;
+    width: 40%;
 }
  
 .helper-arrow {
